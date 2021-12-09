@@ -1,0 +1,189 @@
+v0 = 0
+f_bubblesort [1] [28]
+    t0 = 0
+    store t0 1	T1
+    store t0 2	t15
+    store t0 3	t16
+    store t0 4	t17
+    store t0 5	t18
+    store t0 6	t19
+l0:
+    t3 = t1 - 1
+    store t0 7	t20
+    load 1 t0
+    t4 = t0 < t3
+    store t0 8	T1
+    t0 = 0
+    if t4 == t0 goto l4
+    t2 = 0
+    store t0 9	T1
+    store t0 10	t15
+    store t0 11	t16
+    store t0 12	t17
+    store t0 13	t18
+    store t0 14	t19
+l1:
+    store t0 15	t20
+    load 9 t0
+    t5 = t1 - t0
+    t6 = t5 - 1
+    s0 = t2 < t6
+    store t0 16	T1
+    t0 = 0
+    if s0 == t0 goto l3
+    s1 = t2 * 4
+    t0 = a0 + s1
+    s2 = t0[0]
+    s3 = t2 + 1
+    s4 = s3 * 4
+    t0 = a0 + s4
+    s5 = t0[0]
+    s6 = s2 > s5
+    t0 = 0
+    if s6 == t0 goto l2
+    s8 = t2 + 1
+    s9 = s8 * 4
+    t0 = a0 + s9
+    s10 = t0[0]
+    s7 = s10
+    s11 = t2 + 1
+    t0 = s11 * 4
+    store t0 17	t15
+    t0 = t2 * 4
+    store s11 18	t14
+    s11 = a0 + t0
+    store s11 19	t14
+    load 12 s11
+    s11 = s11[0]
+    store s11 20	t17
+    load 17 s11
+    store t0 21	t16
+    t0 = a0 + s11
+    store s11 22	t15
+    load 20 s11
+    t0[0] = s11
+    store s11 23	t17
+    s11 = t2 * 4
+    store t0 24	t16
+    t0 = a0 + s11
+    t0[0] = s7
+l2:
+    store s11 25	t18
+    s11 = t2 + 1
+    t2 = s11
+    goto l1
+l3:
+    store s11 26	t19
+    load 16 s11
+    store t0 27	t16
+    t0 = s11 + 1
+    s11 = t0
+    goto l0
+l4:
+    a0 = 0
+    return
+end f_bubblesort
+f_main [0] [32]
+    t1 = 10
+    store s11 11	T1
+    loadaddr v0 s11
+    s11[0] = t1
+    loadaddr 1 t0
+    t2 = t0 + 0
+    t3 = 4
+    t2[0] = t3
+    t2 = t0 + 4
+    t3 = 3
+    t2[0] = t3
+    t2 = t0 + 8
+    t3 = 9
+    t2[0] = t3
+    t2 = t0 + 12
+    t3 = 2
+    t2[0] = t3
+    t2 = t0 + 16
+    t3 = 0
+    t2[0] = t3
+    t2 = t0 + 20
+    t3 = 1
+    t2[0] = t3
+    t2 = t0 + 24
+    t3 = 6
+    t2[0] = t3
+    t2 = t0 + 28
+    t3 = 5
+    t2[0] = t3
+    t2 = t0 + 32
+    t3 = 7
+    t2[0] = t3
+    t2 = t0 + 36
+    t3 = 8
+    t2[0] = t3
+    t2 = t0 + 0
+    t3 = t2
+    store t0 12	parastore t
+    store t1 13	parastore t
+    store t3 14	parastore t
+    store a0 15	parastore a0
+    a0 = t3
+    call f_bubblesort
+    t2 = a0
+    load 15 a0
+    load 12 t0
+    load 13 t1
+    load 14 t3
+    t3 = t2
+l5:
+    t2 = t3 < t1
+    s3 = 0
+    if t2 == s3 goto l6
+    t5 = t3 * 4
+    s3 = t0 + t5
+    t6 = s3[0]
+    t4 = t6
+    s0 = t4
+    store t0 16	parastore t
+    store t1 17	parastore t
+    store t2 18	parastore t
+    store t3 19	parastore t
+    store t4 20	parastore t
+    store t5 21	parastore t
+    store t6 22	parastore t
+    store a0 23	parastore a0
+    a0 = s0
+    call f_putint
+    load 23 a0
+    load 16 t0
+    load 17 t1
+    load 18 t2
+    load 19 t3
+    load 20 t4
+    load 21 t5
+    load 22 t6
+    t4 = 10
+    s1 = t4
+    store t0 24	parastore t
+    store t1 25	parastore t
+    store t2 26	parastore t
+    store t3 27	parastore t
+    store t4 28	parastore t
+    store t5 29	parastore t
+    store t6 30	parastore t
+    store a0 31	parastore a0
+    a0 = s1
+    call f_putch
+    load 31 a0
+    load 24 t0
+    load 25 t1
+    load 26 t2
+    load 27 t3
+    load 28 t4
+    load 29 t5
+    load 30 t6
+    s2 = t3 + 1
+    t3 = s2
+    goto l5
+l6:
+    a0 = 0
+    return
+end f_main

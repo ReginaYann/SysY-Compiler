@@ -1,0 +1,84 @@
+v0 = 0
+f_f [1] [7]
+    t0 = a0 == 1
+    t1 = 0
+    if t0 == t1 goto l0
+    a0 = 1
+    return
+l0:
+    t2 = a0 == 2
+    t0 = 0
+    if t2 == t0 goto l1
+    a0 = 1
+    return
+l1:
+    t1 = a0 - 1
+    t0 = t1
+    t1 = a0 - 2
+    t2 = t1
+    t1 = t0
+    store t1 1
+    store t2 2
+    store a0 3
+    a0 = t1
+    call f_f
+    t0 = a0
+    load 3 a0
+    load 1 t1
+    load 2 t2
+    t1 = t2
+    store t0 4
+    store t1 5
+    store a0 6
+    a0 = t1
+    call f_f
+    t2 = a0
+    load 6 a0
+    load 4 t0
+    load 5 t1
+    t1 = t0 + t2
+    t0 = t1
+    a0 = t0
+    return
+end f_f
+f_main [0] [11]
+    store t0 1
+    store a0 2
+    call f_getint
+    t1 = a0
+    load 2 a0
+    load 1 t0
+    t0 = t1
+    loadaddr v0 t2
+    t2[0] = t0
+    t1 = t0
+    store t1 3
+    store a0 4
+    a0 = t1
+    call f_f
+    t0 = a0
+    load 4 a0
+    load 3 t1
+    t1 = t0
+    t0 = t1
+    store t0 5
+    store t1 6
+    store a0 7
+    a0 = t0
+    call f_putint
+    load 7 a0
+    load 5 t0
+    load 6 t1
+    t0 = 10
+    t2 = t0
+    store t1 8
+    store t2 9
+    store a0 10
+    a0 = t2
+    call f_putch
+    load 10 a0
+    load 8 t1
+    load 9 t2
+    a0 = t1
+    return
+end f_main

@@ -1,0 +1,13 @@
+f_defn [0] [0]
+    a0 = 4
+    return
+end f_defn
+f_main [0] [3]
+    store a0 2
+    call f_defn
+    t0 = a0
+    load 2 a0
+    t1 = t0
+    a0 = t1
+    return
+end f_main

@@ -1,0 +1,26 @@
+v0 = 0
+v1 = 0
+f_main [0] [3]
+    t0 = 0
+    loadaddr v1 t1
+    t1[0] = t0
+    t1 = 3
+    loadaddr v0 t2
+    t2[0] = t1
+l0:
+    t2 = t1 > 0
+    t5 = 0
+    if t2 == t5 goto l1
+    t3 = t0 + t1
+    t0 = t3
+    loadaddr v1 t5
+    t5[0] = t0
+    t4 = t1 - 1
+    t1 = t4
+    loadaddr v0 t5
+    t5[0] = t1
+    goto l0
+l1:
+    a0 = t0
+    return
+end f_main

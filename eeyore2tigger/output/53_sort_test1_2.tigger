@@ -1,0 +1,226 @@
+v0 = 0
+f_bubblesort [1] [28]
+	register: put var T1 to reg t0.
+    t0 = 0
+	register: put var T0 to reg t1.
+	register: put var T2 to reg t2.
+	register: put var t0 to reg t3.
+	register: put var t1 to reg t4.
+	register: put var t2 to reg t5.
+	register: put var t3 to reg t6.
+	register: put var t4 to reg s0.
+	register: put var t5 to reg s1.
+	register: put var t6 to reg s2.
+	register: put var t7 to reg s3.
+	register: put var t8 to reg s4.
+	register: put var t9 to reg s5.
+	register: put var t10 to reg s6.
+	register: put var T3 to reg s7.
+	register: put var t11 to reg s8.
+	register: put var t12 to reg s9.
+	register: put var t13 to reg s10.
+	register: put var t14 to reg s11.
+    store t0 1	T1
+	register: put var t15 to reg t0.
+    store t0 2	t15
+	register: put var t16 to reg t0.
+    store t0 3	t16
+	register: put var t17 to reg t0.
+    store t0 4	t17
+	register: put var t18 to reg t0.
+    store t0 5	t18
+	register: put var t19 to reg t0.
+    store t0 6	t19
+	register: put var t20 to reg t0.
+l0:
+    t3 = t1 - 1
+    store t0 7	t20
+    load 1 t0
+	register: put var T1 to reg t0.
+    t4 = t0 < t3
+    store t0 8	T1
+    t0 = 0
+    if t4 == t0 goto l4
+    t2 = 0
+	register: put var T1 to reg t0.
+    store t0 9	T1
+	register: put var t15 to reg t0.
+    store t0 10	t15
+	register: put var t16 to reg t0.
+    store t0 11	t16
+	register: put var t17 to reg t0.
+    store t0 12	t17
+	register: put var t18 to reg t0.
+    store t0 13	t18
+	register: put var t19 to reg t0.
+    store t0 14	t19
+	register: put var t20 to reg t0.
+l1:
+    store t0 15	t20
+    load 9 t0
+	register: put var T1 to reg t0.
+    t5 = t1 - t0
+    t6 = t5 - 1
+    s0 = t2 < t6
+    store t0 16	T1
+    t0 = 0
+    if s0 == t0 goto l3
+    s1 = t2 * 4
+    t0 = a0 + s1
+    s2 = t0[0]
+    s3 = t2 + 1
+    s4 = s3 * 4
+    t0 = a0 + s4
+    s5 = t0[0]
+    s6 = s2 > s5
+    t0 = 0
+    if s6 == t0 goto l2
+    s8 = t2 + 1
+    s9 = s8 * 4
+    t0 = a0 + s9
+    s10 = t0[0]
+    s7 = s10
+    s11 = t2 + 1
+	register: put var t15 to reg t0.
+    t0 = s11 * 4
+    store t0 17	t15
+	register: put var t16 to reg t0.
+    t0 = t2 * 4
+    store s11 18	t14
+    s11 = a0 + t0
+    store s11 19	t14
+    load 12 s11
+	register: put var t17 to reg s11.
+    s11 = s11[0]
+    store s11 20	t17
+    load 17 s11
+	register: put var t15 to reg s11.
+    store t0 21	t16
+    t0 = a0 + s11
+    store s11 22	t15
+    load 20 s11
+	register: put var t17 to reg s11.
+    t0[0] = s11
+    store s11 23	t17
+	register: put var t18 to reg s11.
+    s11 = t2 * 4
+    store t0 24	t16
+    t0 = a0 + s11
+    t0[0] = s7
+l2:
+    store s11 25	t18
+	register: put var t19 to reg s11.
+    s11 = t2 + 1
+    t2 = s11
+    goto l1
+l3:
+    store s11 26	t19
+    load 16 s11
+	register: put var T1 to reg s11.
+    store t0 27	t16
+	register: put var t20 to reg t0.
+    t0 = s11 + 1
+    s11 = t0
+    goto l0
+l4:
+    a0 = 0
+    return
+end f_bubblesort
+f_main [0] [26]
+    t1 = 4
+    store s11 5	T1
+    loadaddr v0 s11
+    s11[0] = t1
+    loadaddr 1 t0
+	register: put var T4 to reg t0.
+    t2 = t0 + 0
+    t3 = 4
+    t2[0] = t3
+    t2 = t0 + 4
+    t3 = 3
+    t2[0] = t3
+    t2 = t0 + 8
+    t3 = 9
+    t2[0] = t3
+    t2 = t0 + 12
+    t3 = 2
+    t2[0] = t3
+	register: put var t21 to reg t2.
+    t2 = t0 + 0
+	register: put var t22 to reg t3.
+    t3 = t2
+    store t0 6	parastore t
+    store t1 7	parastore t
+    store t3 8	parastore t
+    store a0 9	parastore a0
+    a0 = t3
+    call f_bubblesort
+	register: put var t23 to reg t2.
+    t2 = a0
+    load 9 a0
+    load 6 t0
+    load 7 t1
+    load 8 t3
+	register: put var T5 to reg t3.
+    t3 = t2
+	register: put var t24 to reg t2.
+	register: put var T6 to reg t4.
+	register: put var t25 to reg t5.
+	register: put var t26 to reg t6.
+	register: put var t27 to reg s0.
+	register: put var t28 to reg s1.
+	register: put var t29 to reg s2.
+l5:
+    t2 = t3 < t1
+    s3 = 0
+    if t2 == s3 goto l6
+    t5 = t3 * 4
+    s3 = t0 + t5
+    t6 = s3[0]
+    t4 = t6
+    s0 = t4
+    store t0 10	parastore t
+    store t1 11	parastore t
+    store t2 12	parastore t
+    store t3 13	parastore t
+    store t4 14	parastore t
+    store t5 15	parastore t
+    store t6 16	parastore t
+    store a0 17	parastore a0
+    a0 = s0
+    call f_putint
+    load 17 a0
+    load 10 t0
+    load 11 t1
+    load 12 t2
+    load 13 t3
+    load 14 t4
+    load 15 t5
+    load 16 t6
+    t4 = 10
+    s1 = t4
+    store t0 18	parastore t
+    store t1 19	parastore t
+    store t2 20	parastore t
+    store t3 21	parastore t
+    store t4 22	parastore t
+    store t5 23	parastore t
+    store t6 24	parastore t
+    store a0 25	parastore a0
+    a0 = s1
+    call f_putch
+    load 25 a0
+    load 18 t0
+    load 19 t1
+    load 20 t2
+    load 21 t3
+    load 22 t4
+    load 23 t5
+    load 24 t6
+    s2 = t3 + 1
+    t3 = s2
+    goto l5
+l6:
+    a0 = 0
+    return
+end f_main

@@ -1,0 +1,32 @@
+f_ifElseElseIf [0] [5]
+    t0 = 66
+    t1 = 8923
+    t2 = t0 == 5
+    t3 = 0
+    if t2 == t3 goto l0
+    t1 = 25
+    goto l3
+l0:
+    t2 = t0 == 10
+    t4 = 0
+    if t2 == t4 goto l1
+    t1 = 42
+    goto l2
+l1:
+    t2 = t0 * 2
+    t1 = t2
+l2:
+l3:
+    a0 = t1
+    return
+end f_ifElseElseIf
+f_main [0] [3]
+    store t1 1
+    store a0 2
+    call f_ifElseElseIf
+    t0 = a0
+    load 2 a0
+    load 1 t1
+    a0 = t0
+    return
+end f_main

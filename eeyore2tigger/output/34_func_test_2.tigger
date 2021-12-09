@@ -1,0 +1,83 @@
+f_func1 [0] [0]
+    t0 = 1
+    a0 = t0
+    return
+end f_func1
+f_func2 [0] [0]
+    t1 = 2
+    a0 = t1
+    return
+end f_func2
+f_func3 [0] [0]
+    t0 = 4
+    a0 = t0
+    return
+end f_func3
+f_func4 [0] [0]
+    t1 = 8
+    t0 = t1
+    t1 = 16
+    t2 = t0 + t1
+    t0 = t2
+    a0 = t0
+    return
+end f_func4
+f_main [0] [19]
+    t1 = 32
+    t0 = 32
+    t2 = 32
+    store t0 0
+    store t1 1
+    store t2 2
+    store a0 3
+    call f_func1
+    t3 = a0
+    load 3 a0
+    load 0 t0
+    load 1 t1
+    load 2 t2
+    store t0 4
+    store t1 5
+    store t2 6
+    store t3 7
+    store a0 8
+    call f_func2
+    t4 = a0
+    load 8 a0
+    load 4 t0
+    load 5 t1
+    load 6 t2
+    load 7 t3
+    t5 = t3 + t4
+    store t0 9
+    store t1 10
+    store t2 11
+    store t5 12
+    store a0 13
+    call f_func3
+    t3 = a0
+    load 13 a0
+    load 9 t0
+    load 10 t1
+    load 11 t2
+    load 12 t5
+    t4 = t5 + t3
+    store t0 14
+    store t1 15
+    store t2 16
+    store t4 17
+    store a0 18
+    call f_func4
+    t3 = a0
+    load 18 a0
+    load 14 t0
+    load 15 t1
+    load 16 t2
+    load 17 t4
+    t5 = t4 + t3
+    t3 = t5 + t1
+    t1 = t3 + t0
+    t0 = t1 + t2
+    a0 = t0
+    return
+end f_main

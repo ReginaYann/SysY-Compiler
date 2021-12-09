@@ -44,6 +44,7 @@ typedef struct{
 	int linenum;
 	int dim;
 	int* arraysize;
+	int totalsize;
 }Variable;
 
 struct PARAM;
@@ -65,7 +66,7 @@ typedef struct{
 
 Node* makeNode(const char*,Node*,enum _node_type);
 Node* rightMost(Node*);
-void scanTree(Node* root);
+void scanTree(Node* root,FILE* fd);
 void printTree(Node*);
 
 static int lineno;

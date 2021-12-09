@@ -1,0 +1,29 @@
+f_ififElse [0] [5]
+    t0 = 5
+    t1 = 10
+    t2 = t0 == 5
+    t3 = 0
+    if t2 == t3 goto l2
+    t4 = t1 == 10
+    t1 = 0
+    if t4 == t1 goto l0
+    t0 = 25
+    goto l1
+l0:
+    t1 = t0 + 15
+    t0 = t1
+l1:
+l2:
+    a0 = t0
+    return
+end f_ififElse
+f_main [0] [3]
+    store t0 1
+    store a0 2
+    call f_ififElse
+    t1 = a0
+    load 2 a0
+    load 1 t0
+    a0 = t1
+    return
+end f_main

@@ -67,18 +67,18 @@ ConstDef	:	ID Tmp2 ASG ConstInitVal		{$$=makeNode("int[]=",$1,_cdef);
 												$1->sib=$3;}
 			;
 
-Tmp2		:	'['	ConstExp ']' 					{$$=$2;}
-			|	'['	ConstExp ']' Tmp2				{$$=$2; $2->sib=$4;}
+Tmp2		:	LBM	ConstExp RBM 					{$$=$2;}
+			|	LBM	ConstExp RBM Tmp2				{$$=$2; $2->sib=$4;}
 			;
 			
 ConstInitVal:	ConstExp					{$$=makeNode("init",$1,_expr);}
-			|	'{' '}'						{$$=makeNode("init{}",NULL,_expr);}
-			|	'{' ConstInitValList '}'	{$$=makeNode("init{}",$1,_expr);}
+			|	LBL RBL						{$$=makeNode("empty{}",NULL,_expr);}
+			|	LBL ConstInitValList RBL	{$$=makeNode("init{}",$2,_expr);}
 			;
 
 ConstInitValList	
 			:	ConstInitVal						{$$=$1;}
-			|	ConstInitVal COMMA ConstInitValList	{$$=$1; $1->sib=$3;}
+			|	ConstInitVal COMMA ConstInitValList	{$$=$1; rightMost($1)->sib=$3;}
 			;
 /*here : Btype->INT*/
 VarDecl		:	INT VarDefList SEMI		{$$=makeNode("int;",$2,_vdcl);}
@@ -88,27 +88,27 @@ VarDefList	:	VarDef 							{$$=$1;}
 			|	VarDef COMMA VarDefList			{$$=$1; $1->sib=$3;}
 			;
 
-VarDef		:	ID Tmp2						{$$=makeNode("int[]",$1,_vdef);
+VarDef		:	ID VarDefPos				{$$=makeNode("int[]",$1,_vdef);
 											$1->sib=$2;}
 			|	ID							{$$=makeNode("int",$1,_vdef);}
-			|	ID Tmp2 ASG InitVal			{$$=makeNode("int[]=",$1,_vdef);
+			|	ID VarDefPos ASG InitVal	{$$=makeNode("int[]=",$1,_vdef);
 											$1->sib=$2;
 											rightMost($2)->sib=$4;}
 			|	ID ASG InitVal				{$$=makeNode("int=",$1,_vdef);
 											$1->sib=$3;}
 			;
 
-/*VarDefpos	:	'['	Exp ']' 				{$$=new_VarDefpos($2,NULL);}
-			|	'['	Exp ']' VarDefpos		{$$=new_VarDefpos($2,$4);}*/
+VarDefPos	:	LBM	Exp RBM 				{$$=$2;}
+			|	LBM	Exp RBM VarDefPos		{$$=$2; $2->sib=$4;}
 			;
 
 InitVal		:	Exp							{$$=makeNode("init",$1,_expr);}
-			|	'{' '}'						{$$=NULL;}
-			|	'{' InitValList '}'			{$$=$2;}
+			|	LBL RBL						{$$=makeNode("empty{}",NULL,_expr);}
+			|	LBL InitValList RBL			{$$=makeNode("init{}",$2,_expr);}
 			;
 
 InitValList	:	InitVal						{$$=$1;}
-			|	InitVal COMMA InitValList	{$$=$1; $1->sib=$3;}
+			|	InitVal COMMA InitValList	{$$=$1; rightMost($1)->sib=$3;}
 			;
 
 
@@ -127,10 +127,10 @@ FuncDef		:	VOID ID LBS	RBS Block			{$$=makeNode("func",$2,_fdef);
 												{$$=makeNode("func",$2,_fdef);
 												$2->sib=$4;
 												rightMost($2)->sib=$6;}
-			|	INT ID LBS RBS Block			{$$=makeNode("func",$2,_fdef);
+			|	INT ID LBS RBS Block			{$$=makeNode("func=",$2,_fdef);
 												$2->sib=$5;}
 			|	INT ID LBS FuncFParams RBS Block	
-												{$$=makeNode("func",$2,_fdef);
+												{$$=makeNode("func=",$2,_fdef);
 												$2->sib=$4;
 												rightMost($2)->sib=$6;}
 			;
@@ -139,11 +139,6 @@ FuncFParams	:	FuncFParam COMMA FuncFParams	{$$=$1; $1->sib=$3;}
 			|	FuncFParam						{$$=$1;}
 			;
 
-/*here : Btype->INT*/
-/*FuncFParam	:	INT ID						{$$=new_FuncFParam($1,$2,NULL);}
-			|	INT ID '[' ']' Tmp2				{$$=new_FuncFParam($1,$2,$5);}
-			|	INT ID '[' ']'					{$$=new_FuncFParam}
-			;*/
 
 Tmp10		: 								{$$ = NULL;}
 			| LBM ConstExp RBM Tmp10		{$$ = $2; $2->sib=$4;}
@@ -155,7 +150,7 @@ FuncFParam	: INT ID						{$$ = makeNode("param",$2,_expr);}
 			;
 
 
-Block		:	LBL Tmp6 RBL				{$$=$2;}
+Block		:	LBL Tmp6 RBL				{$$=makeNode("{}",$2,_stat);}
 			;
 
 Tmp6		:								{$$=NULL;}
@@ -168,7 +163,7 @@ BlockItem	:	Decl								{$$=$1;}
 
 Stmt		:	LVal ASG Exp SEMI		{$$=makeNode("lval=",$1,_stat);
 										$1->sib=$3;}
-			|	SEMI					{$$=$$->sib;}
+			|	SEMI					{$$=makeNode("semi",$1,_stat);}
 			|	Exp SEMI				{$$=$1;}
 			|	Block					{$$=$1;}
 			/* here the if-else causes shift/reduce conflict 
@@ -192,17 +187,23 @@ Exp			:	AddExp								{$$=$1;}
 Cond		:	LOrExp								{$$=$1;}
 			;
 
-LVal		:	ID Tmp7						{$$=makeNode("int[]",$1,_expr);
+LVal		:	ID Tmp7						{$$=makeNode("lint[]",$1,_expr);
 											$1->sib=$2;}
 			|	ID							{$$=$1;}
 			;
+
+RVal		:	ID Tmp7						{$$=makeNode("rint[]",$1,_expr);
+											$1->sib=$2;}
+			|	ID							{$$=$1;}
+			;
+
 
 Tmp7		:	LBM Exp RBM							{$$=$2;}
 			|	LBM Exp RBM Tmp7					{$$=$2; $2->sib=$4;}
 			; 
 
 PrimaryExp	:	LBS Exp RBS							{$$=$2;}
-			|	LVal								{$$=$1;}
+			|	RVal								{$$=$1;}
 			|	Number								{$$=$1;}
 			;
 
@@ -213,15 +214,12 @@ UnaryExp	:	PrimaryExp						{$$=$1;}
 			|	ID LBS RBS					{$$=makeNode("call",$1,_expr);}
 			|	ID LBS FuncRParams RBS		{$$=makeNode("call",$1,_expr);
 											$1->sib=$3;}
-			|	ADD UnaryExp			{$$=makeNode("pos",$1,_expr);}
-			|	SUB UnaryExp			{$$=makeNode("neg",$1,_expr);}
-			|	NOT UnaryExp			{$$=makeNode("not",$1,_expr);}
+			|	ADD UnaryExp			{$$=makeNode("pos",$2,_expr);}
+			|	SUB UnaryExp			{$$=makeNode("neg",$2,_expr);}
+			|	NOT UnaryExp			{$$=makeNode("not",$2,_expr);}
 			;
 
-/*UnaryOp		:	'+'									{$$=new_UnaryOp('+');}
-			|	'-'									{$$=new_UnaryOp('-');}
-			|	'!'									{$$=new_UnaryOp('!');}
-			;*/
+
 
 FuncRParams	:	Exp 						{$$=$1;}
 			|	Exp	COMMA FuncRParams		{$$=$1; $1->sib=$3;}
@@ -278,17 +276,15 @@ ConstExp	:	AddExp								{$$=$1;}
 
 %%
 
-int main(){
-	char buf[1024];
-	char ch;
-	while(~scanf("%[^\n]",buf)){
-		fprintf(stderr,"%s\n",buf);
-		scanf("%c",&ch);
-	}
-	rewind(stdin);
+int main(int argc,char** argv){
+	const char* infile=argv[3];
+	const char* outfile=argv[5];
+	freopen(infile, "r", stdin);
+	FILE* fd=freopen(outfile, "w", stdout);
+	//freopen(outfile, "w", stdout);
 	lineno=0;
 	yyparse();
-	scanTree(root);
+	scanTree(root,fd);
 	return 0;
 }
 

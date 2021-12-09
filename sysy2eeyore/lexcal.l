@@ -3,12 +3,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <math.h>
-#include "y.tab.h"
+//#include "y.tab.h"
+#include "token.h"
 
 char* oct2dec(char *num);
 char* hex2dec(char *num);
 char* num2char(int num);
+extern char *strdup(const char *);
+int mypow(int num,int t);
 //void yyerror(char*);
 %}
 
@@ -42,7 +44,7 @@ comment2	("/*"((.|(\n))*)"*/")
 "continue"		{return CONT;}
 "break"			{return BREAK;}
 "return"		{return RET;}
-"constant"		{return CONS;}
+"const"			{return CONS;}
 {decInt}		{yylval=makeNode(strdup(yytext),NULL,_imme);return IMM;}
 {octInt}		{yylval=makeNode(oct2dec(strdup(yytext)),NULL,_imme);return IMM;}
 {hexInt}		{yylval=makeNode(hex2dec(strdup(yytext)),NULL,_imme);return IMM;}
@@ -56,7 +58,7 @@ comment2	("/*"((.|(\n))*)"*/")
 "!"				{return NOT;}
 "<"				{return LT;}
 ">"				{return GT;}
-"<="			   			{return LE;}
+"<="			{return LE;}
 ">="			{return GE;}
 "=="			{return EQ;}
 "!="			{return NE;}
@@ -75,15 +77,14 @@ comment2	("/*"((.|(\n))*)"*/")
 
 %%
 
-/*int main(){
-	//for printing the result in the cmd line	
-	while(yylex()){
-		puts(yytext);
-	}
-	return 0;
-	//yylex();
-	//return 1;
-}*/
+
+int mypow(int num,int t){
+	int ret=1;
+	int i;
+	for (i=0;i<t;i++)
+		ret*=num;
+	return ret;
+}
 
 char* num2char(int num){
 	int len=1;
@@ -95,8 +96,8 @@ char* num2char(int num){
 	char* string=malloc(sizeof(char)*(len+1));
 	int i;
 	for (i=0;i<len;i++){
-		string[i]= num/pow(10,len-i-1)+48;
-		num=num % (int)pow(10,len-i-1);
+		string[i]= num/mypow(10,len-i-1)+48;
+		num=num % (int)mypow(10,len-i-1);
 	}
 	string[len] ='\0';
 	//printf("string= %s\n",string);
@@ -118,7 +119,7 @@ char* hex2dec(char *num){
 		else
 			digit=num[i]-48;
 		//printf("char= %c, digit= %d\n",num[i],digit);
-		n+=(digit*pow(16,len-i-1));
+		n+=(digit*mypow(16,len-i-1));
 		//printf(i);
 	}
 	char* string;
@@ -135,7 +136,7 @@ char* oct2dec(char *num){
 	int i;
 	for (i=len-1;i>0;i--){
 		//printf("digit= %c\n",num[i]); 
-		n+=((num[i]-48)*pow(8,len-i-1));
+		n+=((num[i]-48)*mypow(8,len-i-1));
 		//printf("num= %d\n",n);
 	}
 	//printf("enter 2\n");

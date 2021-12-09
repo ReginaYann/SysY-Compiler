@@ -1,0 +1,49 @@
+v0 = malloc 48
+f_main [0] [16]
+    t0 = 0
+    t1 = 0
+l0:
+    t3 = t0 > 5
+    t2 = t3 == 0
+    s9 = 0
+    if t2 == s9 goto l6
+    t4 = t0
+l1:
+    t6 = t4 < 0
+    t5 = t6 == 0
+    s9 = 0
+    if t5 == s9 goto l5
+    s0 = t4 < 4
+    s9 = 0
+    if s0 == s9 goto l2
+    s2 = t0 - t4
+    s3 = s2 < 3
+    s9 = 0
+    if s3 == s9 goto l2
+    s1 = 1
+    goto l3
+l2:
+    s1 = 0
+l3:
+    s9 = 0
+    if s1 == s9 goto l4
+    s4 = t0 - t4
+    s5 = s4 * 4
+    s5 = s5 + t4
+    s6 = s5 * 4
+    loadaddr v0 s9
+    s10 = s9 + s6
+    s10[0] = t1
+    t1 = 1
+l4:
+    s7 = t4 - 1
+    t4 = s7
+    goto l1
+l5:
+    s8 = t0 + 1
+    t0 = s8
+    goto l0
+l6:
+    a0 = 0
+    return
+end f_main

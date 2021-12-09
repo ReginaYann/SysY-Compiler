@@ -1,0 +1,334 @@
+v0 = 0
+v1 = 0
+v2 = 0
+v3 = 0
+f_EightWhile [0] [185]
+    t0 = 5
+    t1 = 6
+    t2 = 7
+    t3 = 10
+    store t3 1
+    store t3 2
+    store t3 3
+    store t3 4
+    store t3 5
+    store t3 6
+    store t3 7
+    store t3 8
+    store t3 9
+    store t3 10
+    store t3 11
+    store t3 12
+    store t3 13
+    store t3 14
+    store t3 15
+    store t3 16
+    store t3 17
+    store t3 18
+    store t3 19
+l0:
+    s1 = t0 < 20
+    store t3 20
+    t3 = 0
+    if s1 == t3 goto l15
+    s2 = t0 + 3
+    t0 = s2
+    load 20 t3
+    store t3 21
+    store t3 22
+    store t3 23
+    store t3 24
+    store t3 25
+    store t3 26
+    store t3 27
+    store t3 28
+    store t3 29
+    store t3 30
+    store t3 31
+    store t3 32
+    store t3 33
+    store t3 34
+    store t3 35
+    store t3 36
+    store t3 37
+    store t3 38
+    store t3 39
+l1:
+    s3 = t1 < 10
+    store t3 40
+    t3 = 0
+    if s3 == t3 goto l14
+    s4 = t1 + 1
+    t1 = s4
+    load 40 t3
+    store t3 41
+    store t3 42
+    store t3 43
+    store t3 44
+    store t3 45
+    store t3 46
+    store t3 47
+    store t3 48
+    store t3 49
+    store t3 50
+    store t3 51
+    store t3 52
+    store t3 53
+    store t3 54
+    store t3 55
+    store t3 56
+    store t3 57
+    store t3 58
+    store t3 59
+l2:
+    s5 = t2 == 7
+    store t3 60
+    t3 = 0
+    if s5 == t3 goto l13
+    s6 = t2 - 1
+    t2 = s6
+    load 60 t3
+    store t3 61
+    store t3 62
+    store t3 63
+    store t3 64
+    store t3 65
+    store t3 66
+    store t3 67
+    store t3 68
+    store t3 69
+    store t3 70
+    store t3 71
+    store t3 72
+    store t3 73
+    store t3 74
+    store t3 75
+    store t3 76
+    store t3 77
+    store t3 78
+    store t3 79
+l3:
+    store t3 80
+    load 61 t3
+    s7 = t3 < 20
+    store t3 81
+    t3 = 0
+    if s7 == t3 goto l12
+    load 81 t3
+    load 81 t3
+    s8 = t3 + 3
+    t3 = s8
+    store t3 82
+    store t3 83
+    store t3 84
+    store t3 85
+    store t3 86
+    store t3 87
+    store t3 88
+    store t3 89
+    store t3 90
+    store t3 91
+    store t3 92
+    store t3 93
+    store t3 94
+    store t3 95
+    store t3 96
+    store t3 97
+    store t3 98
+    store t3 99
+    store t3 100
+l4:
+    s9 = s0 > 1
+    store t3 101
+    t3 = 0
+    if s9 == t3 goto l11
+    s10 = s0 - 1
+    s0 = s10
+    load 101 t3
+    loadaddr v3 t3
+    t3[0] = s0
+    load 101 t3
+    store t3 102
+    store t3 103
+    store t3 104
+    store t3 105
+    store t3 106
+    store t3 107
+    store t3 108
+    store t3 109
+    store t3 110
+    store t3 111
+    store t3 112
+    store t3 113
+    store t3 114
+    store t3 115
+    store t3 116
+    store t3 117
+    store t3 118
+    store t3 119
+    store t3 120
+l5:
+    s11 = t6 > 2
+    store t3 121
+    t3 = 0
+    if s11 == t3 goto l10
+    load 121 t3
+    t3 = t6 - 2
+    t6 = t3
+    store t2 122
+    loadaddr v2 t2
+    t2[0] = t6
+    store t2 123
+    store t2 124
+    store t2 125
+    store t2 126
+    store t2 127
+    store t2 128
+    store t2 129
+    store t2 130
+    store t2 131
+    store t2 132
+    store t2 133
+    store t2 134
+    store t2 135
+    store t2 136
+    store t2 137
+    store t2 138
+    store t2 139
+    store t2 140
+    store t2 141
+    store t2 142
+l6:
+    store t2 143
+    t2 = t4 < 3
+    store t0 144
+    t0 = 0
+    if t2 == t0 goto l9
+    load 144 t0
+    t0 = t4 + 10
+    t4 = t0
+    store t1 145
+    loadaddr v0 t1
+    t1[0] = t4
+    store t1 146
+    store t1 147
+    store t1 148
+    store t1 149
+    store t1 150
+    store t1 151
+    store t1 152
+    store t1 153
+    store t1 154
+    store t1 155
+    store t1 156
+    store t1 157
+    store t1 158
+    store t1 159
+    store t1 160
+    store t1 161
+    store t1 162
+    store t1 163
+    store t1 164
+    store t1 165
+l7:
+    store t1 166
+    t1 = t5 < 10
+    store t3 167
+    t3 = 0
+    if t1 == t3 goto l8
+    load 167 t3
+    t3 = t5 + 8
+    t5 = t3
+    store t3 168
+    loadaddr v1 t3
+    t3[0] = t5
+    goto l7
+l8:
+    store t3 169
+    t3 = t5 - 1
+    t5 = t3
+    store t3 170
+    loadaddr v1 t3
+    t3[0] = t5
+    goto l6
+l9:
+    store t3 171
+    t3 = t4 - 8
+    t4 = t3
+    store t3 172
+    loadaddr v0 t3
+    t3[0] = t4
+    goto l5
+l10:
+    store t3 173
+    t3 = t6 + 1
+    t6 = t3
+    store t3 174
+    loadaddr v2 t3
+    t3[0] = t6
+    goto l4
+l11:
+    store t3 175
+    t3 = s0 + 1
+    s0 = t3
+    store t3 176
+    loadaddr v3 t3
+    t3[0] = s0
+    goto l3
+l12:
+    store t3 177
+    load 150 t3
+    store t2 178
+    t2 = t3 - 1
+    t3 = t2
+    goto l2
+l13:
+    store t3 179
+    load 149 t3
+    store t2 180
+    t2 = t3 + 1
+    t3 = t2
+    goto l1
+l14:
+    store t3 181
+    load 148 t3
+    store t2 182
+    t2 = t3 - 2
+    t3 = t2
+    goto l0
+l15:
+    store t2 183
+    load 179 t2
+    store t1 184
+    t1 = t3 + t2
+    load 147 t0
+    t3 = t0 + t1
+    load 181 t0
+    t1 = t3 + t0
+    t0 = s0 + t2
+    t2 = t0 - t4
+    t0 = t2 + t5
+    t2 = t1 - t0
+    a0 = t2
+    return
+end f_EightWhile
+f_main [0] [2]
+    t0 = 1
+    loadaddr v0 t1
+    t1[0] = t0
+    t0 = 2
+    loadaddr v1 t1
+    t1[0] = t0
+    t0 = 4
+    loadaddr v3 t1
+    t1[0] = t0
+    t0 = 6
+    loadaddr v2 t1
+    t1[0] = t0
+    store a0 1
+    call f_EightWhile
+    t0 = a0
+    load 1 a0
+    a0 = t0
+    return
+end f_main

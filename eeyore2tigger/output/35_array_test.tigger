@@ -1,0 +1,52 @@
+v0 = malloc 8
+f_func [1] [0]
+    loadaddr v0 t0
+    t1 = t0 + 0
+    t1 = t1[0]
+    t2 = 3
+    t3 = t2 - t1
+    t0 = t3 * 4
+    t1 = a0 + t0
+    t1 = t1[0]
+    a0 = t1
+    return
+end f_func
+f_main [0] [7]
+    loadaddr v0 t2
+    t3 = t2 + 0
+    t4 = 1
+    t3[0] = t4
+    t3 = t2 + 4
+    t5 = 2
+    t3[0] = t5
+    loadaddr 1 t3
+    t6 = t3 + 0
+    s0 = x0 - 1
+    t6[0] = s0
+    t6 = t3 + 0
+    t6 = t6[0]
+    s0 = t6 - 2
+    t0 = t3 + 4
+    t0[0] = s0
+    t0 = t3 + 4
+    t0 = t0[0]
+    t1 = t0
+    t0 = t3 + 8
+    t2 = 16
+    t0[0] = t2
+    t0 = t3 + 0
+    t2 = t0
+    store t1 4
+    store t2 5
+    store a0 6
+    a0 = t2
+    call f_func
+    t0 = a0
+    load 6 a0
+    load 4 t1
+    load 5 t2
+    t2 = t0 + 2
+    t0 = t2 + t1
+    a0 = t0
+    return
+end f_main

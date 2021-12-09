@@ -1,0 +1,67 @@
+v0 = malloc 100
+f_func [1] [11]
+    t0 = 0
+    t1 = 0
+    t2 = 0
+l0:
+    t3 = t0 < 5
+    s4 = 0
+    if t3 == s4 goto l3
+l1:
+    t4 = t1 < 5
+    s4 = 0
+    if t4 == s4 goto l2
+    t5 = t0 * 5
+    s4 = t5 + t1
+    t6 = s4 * 4
+    s5 = a0 + t6
+    s0 = s5[0]
+    s1 = t2 + s0
+    t2 = s1
+    s2 = t1 + 1
+    t1 = s2
+    goto l1
+l2:
+    s3 = t0 + 1
+    t0 = s3
+    goto l0
+l3:
+    a0 = t2
+    return
+end f_func
+f_main [0] [8]
+    loadaddr v0 s5
+    s6 = s5 + 0
+    s7 = 1
+    s6[0] = s7
+    s6 = s5 + 4
+    s8 = 2
+    s6[0] = s8
+    s6 = s5 + 8
+    s9 = 3
+    s6[0] = s9
+    s6 = s5 + 12
+    s10 = 4
+    s6[0] = s10
+    s6 = s5 + 16
+    s11 = 5
+    s6[0] = s11
+    s6 = s5 + 0
+    t0 = s6
+    store t0 4
+    store a0 5
+    a0 = t0
+    call f_func
+    t1 = a0
+    load 5 a0
+    load 4 t0
+    t0 = t1
+    store t0 6
+    store a0 7
+    a0 = t0
+    call f_putint
+    load 7 a0
+    load 6 t0
+    a0 = 0
+    return
+end f_main

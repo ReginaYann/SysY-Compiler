@@ -1,0 +1,210 @@
+f_atoi_ [1] [33]
+    t0 = 0
+    t1 = 1
+    t2 = 0
+    store t0 1
+    store t0 2
+    store t0 3
+    store t0 4
+    store t0 5
+    store t0 6
+    store t0 7
+    store t0 8
+    store t0 9
+    store t0 10
+    store t0 11
+    store t0 12
+    store t0 13
+    store t0 14
+    store t0 15
+    store t0 16
+    store t0 17
+    store t0 18
+    store t0 19
+    store t0 20
+    store t0 21
+    store t0 22
+    store t0 23
+    store t0 24
+l0:
+    t3 = t2 * 4
+    store t0 25
+    t0 = a0 + t3
+    t4 = t0[0]
+    t5 = t4 == 32
+    store t0 26
+    t0 = 0
+    if t5 == t0 goto l1
+    t6 = t2 + 1
+    t2 = t6
+    goto l0
+l1:
+    s0 = t2 * 4
+    t0 = a0 + s0
+    s1 = t0[0]
+    s2 = s1 == 43
+    t0 = 0
+    if s2 != t0 goto l2
+    s4 = t2 * 4
+    t0 = a0 + s4
+    s5 = t0[0]
+    s6 = s5 == 45
+    t0 = 0
+    if s6 != t0 goto l2
+    s3 = 0
+    goto l3
+l2:
+    s3 = 1
+l3:
+    t0 = 0
+    if s3 == t0 goto l5
+    s7 = t2 * 4
+    t0 = a0 + s7
+    s8 = t0[0]
+    s9 = s8 == 45
+    t0 = 0
+    if s9 == t0 goto l4
+    t3 = x0 - 1
+    t1 = t3
+l4:
+    s10 = t2 + 1
+    t2 = s10
+    goto l9
+l5:
+    t0 = t2 * 4
+    t3 = a0 + t0
+    load 2 t3
+    t3 = t3[0]
+    t4 = t3 < 48
+    t0 = 0
+    if t4 != t0 goto l6
+    t3 = t2 * 4
+    t0 = a0 + t3
+    load 6 t0
+    t0 = t0[0]
+    t4 = t0 > 57
+    t0 = 0
+    if t4 != t0 goto l6
+    t3 = 0
+    goto l7
+l6:
+    t3 = 1
+l7:
+    t0 = 0
+    if t3 == t0 goto l8
+    t4 = 2147483647
+    a0 = t4
+    return
+l8:
+l9:
+    store t4 27
+    store t4 28
+l10:
+    t2 = t1 * 4
+    store t4 29
+    t4 = a0 + t2
+    t3 = t4[0]
+    t5 = t3 != 0
+    store t4 30
+    t4 = 0
+    if t5 == t4 goto l11
+    s0 = t1 * 4
+    t4 = a0 + s0
+    s1 = t4[0]
+    s2 = s1 > 47
+    t4 = 0
+    if s2 == t4 goto l11
+    t6 = 1
+    goto l12
+l11:
+    t6 = 0
+l12:
+    t4 = 0
+    if t6 == t4 goto l13
+    s4 = t1 * 4
+    t4 = a0 + s4
+    s5 = t4[0]
+    s6 = s5 < 58
+    t4 = 0
+    if s6 == t4 goto l13
+    s3 = 1
+    goto l14
+l13:
+    s3 = 0
+l14:
+    t4 = 0
+    if s3 == t4 goto l15
+    store t3 31
+    load 27 t3
+    s7 = t3 * 10
+    s8 = t1 * 4
+    t4 = a0 + s8
+    s9 = t4[0]
+    s10 = s7 + s9
+    s11 = s10 - 48
+    t3 = s11
+    t4 = t1 + 1
+    t1 = t4
+    goto l10
+l15:
+    store t4 32
+    t4 = t3 * t0
+    a0 = t4
+    return
+end f_atoi_
+f_main [0] [512]
+    t0 = 0
+    t1 = 0
+    loadaddr 1 t2
+l16:
+    t3 = t0 != 10
+    s5 = 0
+    if t3 == s5 goto l17
+    store t0 501
+    store t1 502
+    store t2 503
+    store t3 504
+    store t4 505
+    store t5 506
+    store t6 507
+    store a0 508
+    call f_getch
+    t4 = a0
+    load 508 a0
+    load 501 t0
+    load 502 t1
+    load 503 t2
+    load 504 t3
+    load 505 t4
+    load 506 t5
+    load 507 t6
+    t0 = t4
+    t5 = t1 * 4
+    s5 = t2 + t5
+    s5[0] = t0
+    t6 = t1 + 1
+    t1 = t6
+    goto l16
+l17:
+    s0 = t1 * 4
+    t0 = t2 + s0
+    t3 = 0
+    t0[0] = t3
+    s1 = t2 + 0
+    s2 = s1
+    store t1 509
+    store a0 510
+    a0 = s2
+    call f_atoi_
+    s3 = a0
+    load 510 a0
+    load 509 t1
+    t1 = s3
+    s4 = t1
+    store a0 511
+    a0 = s4
+    call f_putint
+    load 511 a0
+    a0 = 0
+    return
+end f_main

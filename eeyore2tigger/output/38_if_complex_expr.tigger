@@ -1,0 +1,92 @@
+f_main [0] [10]
+    t0 = 5
+    t1 = 5
+    t2 = 1
+    t3 = x0 - 2
+    t4 = t3
+    t3 = 2
+    t5 = t4 * 1
+    t6 = t5 / 2
+    t5 = t6 < 0
+    t6 = 0
+    if t5 != t6 goto l2
+    s0 = t0 - t1
+    t5 = s0 != 0
+    t6 = 0
+    if t5 == t6 goto l0
+    s0 = t2 + 3
+    t5 = s0 % 2
+    t6 = t5 != 0
+    t5 = 0
+    if t6 == t5 goto l0
+    s0 = 1
+    goto l1
+l0:
+    s0 = 0
+l1:
+    store t3 1
+    t3 = 0
+    if s0 != t3 goto l2
+    t5 = 0
+    goto l3
+l2:
+    t5 = 1
+l3:
+    s0 = 0
+    if t5 == s0 goto l4
+    t6 = t3
+    store t0 2
+    store t1 3
+    store t2 4
+    store t3 5
+    store t4 6
+    store t6 7
+    store a0 8
+    a0 = t6
+    call f_putint
+    load 8 a0
+    load 2 t0
+    load 3 t1
+    load 4 t2
+    load 5 t3
+    load 6 t4
+    load 7 t6
+l4:
+    s1 = t4 % 2
+    s2 = s1 + 67
+    s3 = s2 < 0
+    t4 = 0
+    if s3 != t4 goto l7
+    s5 = t0 - t1
+    s6 = s5 != 0
+    t0 = 0
+    if s6 == t0 goto l5
+    s8 = t2 + 2
+    s9 = s8 % 2
+    s10 = s9 != 0
+    t0 = 0
+    if s10 == t0 goto l5
+    s7 = 1
+    goto l6
+l5:
+    s7 = 0
+l6:
+    t0 = 0
+    if s7 != t0 goto l7
+    s4 = 0
+    goto l8
+l7:
+    s4 = 1
+l8:
+    t0 = 0
+    if s4 == t0 goto l9
+    t3 = 4
+    s11 = t3
+    store a0 9
+    a0 = s11
+    call f_putint
+    load 9 a0
+l9:
+    a0 = 0
+    return
+end f_main

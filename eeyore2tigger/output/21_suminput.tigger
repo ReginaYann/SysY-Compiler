@@ -1,0 +1,67 @@
+v0 = 0
+v1 = malloc 40
+f_main [0] [25]
+    store a0 14
+    call f_getint
+    t0 = a0
+    load 14 a0
+    t1 = t0
+    loadaddr v0 t2
+    t2[0] = t1
+    t0 = t1 > 10
+    t2 = 0
+    if t0 == t2 goto l0
+    a0 = 1
+    return
+l0:
+    loadaddr v1 t3
+    t5 = 0
+    t4 = t5
+l1:
+    t6 = t5 < t1
+    t0 = 0
+    if t6 == t0 goto l2
+    s0 = t5 * 4
+    store t1 15
+    store t3 16
+    store t4 17
+    store t5 18
+    store t6 19
+    store a0 20
+    call f_getint
+    s1 = a0
+    load 20 a0
+    load 15 t1
+    load 16 t3
+    load 17 t4
+    load 18 t5
+    load 19 t6
+    t0 = t3 + s0
+    t0[0] = s1
+    s2 = t5 * 4
+    t0 = t3 + s2
+    s3 = t0[0]
+    s4 = t4 + s3
+    t4 = s4
+    s5 = t5 + 1
+    t5 = s5
+    goto l1
+l2:
+    s6 = t4
+    store t4 21
+    store a0 22
+    a0 = s6
+    call f_putint
+    load 22 a0
+    load 21 t4
+    s7 = 10
+    s8 = s7
+    store t4 23
+    store a0 24
+    a0 = s8
+    call f_putch
+    load 24 a0
+    load 23 t4
+    a0 = t4
+    return
+end f_main

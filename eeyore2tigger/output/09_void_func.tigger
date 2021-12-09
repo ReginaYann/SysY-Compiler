@@ -1,0 +1,33 @@
+v0 = 0
+v1 = 0
+v2 = 0
+f_add [2] [1]
+    t0 = a0 + a1
+    t1 = t0
+    loadaddr v2 t2
+    t2[0] = t1
+    return
+    return
+end f_add
+f_main [0] [5]
+    t0 = 3
+    loadaddr v0 t1
+    t1[0] = t0
+    t1 = 2
+    loadaddr v1 t2
+    t2[0] = t1
+    t2 = t0
+    t0 = t1
+    store t0 2
+    store t2 3
+    store a0 4
+    a0 = t2
+    a1 = t0
+    call f_add
+    load 4 a0
+    load 2 t0
+    load 3 t2
+    load v2 t0
+    a0 = t0
+    return
+end f_main

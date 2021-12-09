@@ -1,0 +1,54 @@
+f_fib [1] [7]
+    t0 = a0 == 0
+    t1 = 0
+    if t0 == t1 goto l0
+    a0 = 0
+    return
+l0:
+    t2 = a0 == 1
+    t0 = 0
+    if t2 == t0 goto l1
+    a0 = 1
+    return
+l1:
+    t1 = a0 - 1
+    t0 = t1
+    t1 = a0 - 2
+    t2 = t1
+    t1 = t0
+    store t1 1
+    store t2 2
+    store a0 3
+    a0 = t1
+    call f_fib
+    t0 = a0
+    load 3 a0
+    load 1 t1
+    load 2 t2
+    t1 = t2
+    store t0 4
+    store t1 5
+    store a0 6
+    a0 = t1
+    call f_fib
+    t2 = a0
+    load 6 a0
+    load 4 t0
+    load 5 t1
+    t1 = t0 + t2
+    a0 = t1
+    return
+end f_fib
+f_main [0] [3]
+    t0 = 10
+    t1 = t0
+    store t1 1
+    store a0 2
+    a0 = t1
+    call f_fib
+    t0 = a0
+    load 2 a0
+    load 1 t1
+    a0 = t0
+    return
+end f_main

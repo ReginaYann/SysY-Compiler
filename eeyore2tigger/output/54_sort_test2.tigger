@@ -1,0 +1,171 @@
+v0 = 0
+f_insertsort [1] [12]
+    t0 = 1
+    store t0 1
+    store t0 2
+l0:
+    store t0 3
+    load 1 t0
+    t2 = t0 < t1
+    store t0 4
+    t0 = 0
+    if t2 == t0 goto l5
+    store s11 5
+    load 4 s11
+    t4 = s11 * 4
+    t0 = a0 + t4
+    t5 = t0[0]
+    t3 = t5
+    s0 = s11 - 1
+    t6 = s0
+    store s11 6
+    store s11 7
+l1:
+    store s11 8
+    s11 = x0 - 1
+    s1 = t6 > s11
+    s11 = 0
+    if s1 == s11 goto l2
+    s3 = t6 * 4
+    s11 = a0 + s3
+    s4 = s11[0]
+    s5 = t3 < s4
+    s11 = 0
+    if s5 == s11 goto l2
+    s2 = 1
+    goto l3
+l2:
+    s2 = 0
+l3:
+    s11 = 0
+    if s2 == s11 goto l4
+    s6 = t6 + 1
+    s7 = s6 * 4
+    s8 = t6 * 4
+    s11 = a0 + s8
+    s9 = s11[0]
+    s11 = a0 + s7
+    s11[0] = s9
+    s10 = t6 - 1
+    t6 = s10
+    goto l1
+l4:
+    t0 = t6 + 1
+    s11 = t0 * 4
+    store t0 9
+    t0 = a0 + s11
+    t0[0] = t3
+    store s11 10
+    load 6 s11
+    store t0 11
+    t0 = s11 + 1
+    s11 = t0
+    goto l0
+l5:
+    a0 = 0
+    return
+end f_insertsort
+f_main [0] [32]
+    t1 = 10
+    store s11 11
+    loadaddr v0 s11
+    s11[0] = t1
+    loadaddr 1 t0
+    t2 = t0 + 0
+    t3 = 4
+    t2[0] = t3
+    t2 = t0 + 4
+    t4 = 3
+    t2[0] = t4
+    t2 = t0 + 8
+    t5 = 9
+    t2[0] = t5
+    t2 = t0 + 12
+    t6 = 2
+    t2[0] = t6
+    t2 = t0 + 16
+    s0 = 0
+    t2[0] = s0
+    t2 = t0 + 20
+    s1 = 1
+    t2[0] = s1
+    t2 = t0 + 24
+    s2 = 6
+    t2[0] = s2
+    t2 = t0 + 28
+    s3 = 5
+    t2[0] = s3
+    t2 = t0 + 32
+    s4 = 7
+    t2[0] = s4
+    t2 = t0 + 36
+    s5 = 8
+    t2[0] = s5
+    t2 = t0 + 0
+    t3 = t2
+    store t0 12
+    store t1 13
+    store t3 14
+    store a0 15
+    a0 = t3
+    call f_insertsort
+    t2 = a0
+    load 15 a0
+    load 12 t0
+    load 13 t1
+    load 14 t3
+    t3 = t2
+l6:
+    t2 = t3 < t1
+    s3 = 0
+    if t2 == s3 goto l7
+    t5 = t3 * 4
+    s3 = t0 + t5
+    t6 = s3[0]
+    t4 = t6
+    s0 = t4
+    store t0 16
+    store t1 17
+    store t2 18
+    store t3 19
+    store t4 20
+    store t5 21
+    store t6 22
+    store a0 23
+    a0 = s0
+    call f_putint
+    load 23 a0
+    load 16 t0
+    load 17 t1
+    load 18 t2
+    load 19 t3
+    load 20 t4
+    load 21 t5
+    load 22 t6
+    t4 = 10
+    s1 = t4
+    store t0 24
+    store t1 25
+    store t2 26
+    store t3 27
+    store t4 28
+    store t5 29
+    store t6 30
+    store a0 31
+    a0 = s1
+    call f_putch
+    load 31 a0
+    load 24 t0
+    load 25 t1
+    load 26 t2
+    load 27 t3
+    load 28 t4
+    load 29 t5
+    load 30 t6
+    s2 = t3 + 1
+    t3 = s2
+    goto l6
+l7:
+    a0 = 0
+    return
+end f_main
